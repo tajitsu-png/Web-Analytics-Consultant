@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ウェブ解析士認定資格試験 演習問題集</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- ヘッダー -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-logo">
+          <i class="fas fa-chart-line"></i>
+          <span>ウェブ解析士 演習問題集</span>
+        </div>
+        <div class="header-progress" id="headerProgress" style="display:none;">
+          <span id="progressText">第1問 / 全10問</span>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+
+      <!-- 【画面1】章選択画面 -->
+      <div id="screenChapter" class="screen active">
+        <div class="welcome-card">
+          <div class="welcome-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h1 class="welcome-title">2026年ウェブ解析士<br>認定資格試験 演習問題集</h1>
+          <p class="welcome-desc" id="welcomeDesc">これから2026年ウェブ解析士認定資格試験の演習問題を始めます。<br>演習したい章を選んでください。</p>
+          <div class="chapter-grid" id="chapterGrid">
+            <button class="chapter-btn" data-chapter="1">
+              <span class="chapter-num">第1章</span>
+              <span class="chapter-title">ウェブ解析と基本的な指標</span>
+            </button>
+            <button class="chapter-btn" data-chapter="2">
+              <span class="chapter-num">第2章</span>
+              <span class="chapter-title">事業戦略とマーケティング解析</span>
+            </button>
+            <button class="chapter-btn" data-chapter="3">
+              <span class="chapter-num">第3章</span>
+              <span class="chapter-title">デジタル化戦略と計画立案</span>
+            </button>
+            <button class="chapter-btn" data-chapter="4">
+              <span class="chapter-num">第4章</span>
+              <span class="chapter-title">ウェブ解析の設計</span>
+            </button>
+            <button class="chapter-btn" data-chapter="5">
+              <span class="chapter-num">第5章</span>
+              <span class="chapter-title">インプレッションの解析</span>
+            </button>
+            <button class="chapter-btn" data-chapter="6">
+              <span class="chapter-num">第6章</span>
+              <span class="chapter-title">エンゲージメントと間接効果</span>
+            </button>
+            <button class="chapter-btn" data-chapter="7">
+              <span class="chapter-num">第7章</span>
+              <span class="chapter-title">オウンドメディアの解析と改善</span>
+            </button>
+            <button class="chapter-btn" data-chapter="8">
+              <span class="chapter-num">第8章</span>
+              <span class="chapter-title">ウェブ解析士のレポーティング</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【画面2】開始確認画面 -->
+      <div id="screenConfirm" class="screen">
+        <div class="confirm-card">
+          <div class="confirm-icon"><i class="fas fa-play-circle"></i></div>
+          <h2 class="confirm-title" id="confirmTitle">第1章の演習を開始します</h2>
+          <p class="confirm-desc">全10問の4択問題に挑戦します。<br>準備ができたら <strong>「OK」</strong> ボタンを押してください。</p>
+          <div class="confirm-info">
+            <div class="info-item"><i class="fas fa-list-ol"></i> 全10問</div>
+            <div class="info-item"><i class="fas fa-check-double"></i> 4択形式</div>
+            <div class="info-item"><i class="fas fa-book"></i> 正解・解説付き</div>
+          </div>
+          <button class="btn-ok" id="btnOk">OK　演習を開始する</button>
+          <button class="btn-back" id="btnConfirmBack"><i class="fas fa-arrow-left"></i> 章を選び直す</button>
+        </div>
+      </div>
+
+      <!-- 【画面3】問題画面 -->
+      <div id="screenQuestion" class="screen">
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-badge" id="questionBadge">第1問 / 全10問</span>
+            <span class="question-type-badge" id="questionTypeBadge">正しいものを選ぶ</span>
+          </div>
+          <div class="question-instruction" id="questionInstruction">下記の中から最も適切な選択肢を選びなさい。</div>
+          <div class="question-text" id="questionText"></div>
+          <div class="choices-grid" id="choicesGrid">
+            <button class="choice-btn" data-choice="A" id="choiceA">
+              <span class="choice-label">A</span>
+              <span class="choice-text" id="choiceTextA"></span>
+            </button>
+            <button class="choice-btn" data-choice="B" id="choiceB">
+              <span class="choice-label">B</span>
+              <span class="choice-text" id="choiceTextB"></span>
+            </button>
+            <button class="choice-btn" data-choice="C" id="choiceC">
+              <span class="choice-label">C</span>
+              <span class="choice-text" id="choiceTextC"></span>
+            </button>
+            <button class="choice-btn" data-choice="D" id="choiceD">
+              <span class="choice-label">D</span>
+              <span class="choice-text" id="choiceTextD"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 【画面4】解説画面 -->
+      <div id="screenExplain" class="screen">
+        <div class="explain-card">
+          <div class="explain-header">
+            <span class="question-badge" id="explainBadge">第1問 / 全10問</span>
+            <div class="result-badge" id="resultBadge"></div>
+          </div>
+          <div class="explain-question" id="explainQuestion"></div>
+          <div class="correct-answer-box" id="correctAnswerBox"></div>
+          <div class="explain-section">
+            <h3><i class="fas fa-lightbulb"></i> 解説</h3>
+            <div class="explain-content" id="explainContent"></div>
+          </div>
+          <div class="source-box" id="sourceBox"></div>
+          <button class="btn-next" id="btnNext">
+            次の問題へ <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 【画面5】結果画面 -->
+      <div id="screenResult" class="screen">
+        <div class="result-card">
+          <div class="result-icon" id="resultIcon"></div>
+          <h2 class="result-title">演習完了！</h2>
+          <div class="score-display">
+            <div class="score-circle" id="scoreCircle">
+              <span class="score-number" id="scoreNumber">0</span>
+              <span class="score-denom">/ 10</span>
+            </div>
+            <div class="score-rate" id="scoreRate">正答率 0%</div>
+          </div>
+          <div class="eval-comment" id="evalComment"></div>
+          <div class="result-detail" id="resultDetail"></div>
+          <div class="result-actions">
+            <button class="btn-retry" id="btnRetry">
+              <i class="fas fa-redo"></i> 同じ章を再演習
+            </button>
+            <button class="btn-chapter-select" id="btnChapterSelect">
+              <i class="fas fa-list"></i> 別の章を選ぶ
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="app-footer">
+      <p>2026年ウェブ解析士認定試験公式テキスト準拠 &copy; 演習問題集</p>
+    </footer>
+  </div>
+
+  <!-- 問題データ（各章） -->
+  <script src="js/questions_ch1.js"></script>
+  <script src="js/questions_ch2.js"></script>
+  <script src="js/questions_ch3.js"></script>
+  <script src="js/questions_ch4.js"></script>
+  <script src="js/questions_ch5.js"></script>
+  <script src="js/questions_ch6.js"></script>
+  <script src="js/questions_ch7.js"></script>
+  <script src="js/questions_ch8.js"></script>
+  <!-- メインアプリロジック -->
+  <script src="js/app.js"></script>
+</body>
+</html>
